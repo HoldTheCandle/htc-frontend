@@ -1,78 +1,129 @@
+/* -----------------------------------------------------------
+   AXIFORMA — DECLARACIÓN DE FUENTES (OTF)
+----------------------------------------------------------- */
+
+@font-face {
+  font-family: 'Axiforma';
+  src: url('@/assets/fonts/Axiforma/Axiforma-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Axiforma';
+  src: url('@/assets/fonts/Axiforma/Axiforma-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Axiforma';
+  src: url('@/assets/fonts/Axiforma/Axiforma-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* -----------------------------------------------------------
+   VARIABLES GLOBALES DE COLOR Y TIPO
+----------------------------------------------------------- */
+
 :root {
+  --font-primary: 'Axiforma', sans-serif;
+
   --bg: #F4F7FA;
+  --text-1: #1A202C;
+  --text-2: rgba(26, 32, 44, 0.80);
+  --text-3: rgba(113, 128, 150, 0.65);
+
   --primary: #0080FF;
-
-  --text-main: #1A202C;
-  --text-main-soft: rgba(26, 32, 44, 0.8);
-  --text-muted: rgba(113, 128, 150, 0.65);
-
   --panel-bg: #FFFFFF;
   --border-color: #E2E8F0;
-  --shadow-blue: rgba(43, 160, 255, 0.33);
+  --shadow: rgba(43, 160, 255, 0.33);
 }
 
-/* Tipografía global (Axiforma + fallback) */
-body {
+/* -----------------------------------------------------------
+   GLOBAL RESET
+----------------------------------------------------------- */
+
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-primary);
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
   background: var(--bg);
-  color: var(--text-main);
-  font-family: "Axiforma", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+  color: var(--text-1);
 }
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+
+/* Scroll bonito */
+::-webkit-scrollbar {
+  width: 8px;
 }
-a:hover {
-  color: #535bf2;
+::-webkit-scrollbar-track {
+  background: #e2e8f0;
 }
+::-webkit-scrollbar-thumb {
+  background: #a0aec0;
+  border-radius: 10px;
+}
+
+/* -----------------------------------------------------------
+   TITULOS Y TEXTO BASE
+----------------------------------------------------------- */
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 32px;
+  font-weight: 700;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+h2 {
+  font-size: 26px;
+  font-weight: 700;
 }
 
-.card {
-  padding: 2em;
+h3 {
+  font-size: 22px;
+  font-weight: 700;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+h4 {
+  font-size: 18px;
+  font-weight: 600;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* -----------------------------------------------------------
+   UTILIDADES REUSABLES
+----------------------------------------------------------- */
+
+.panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px var(--shadow);
+  padding: 20px;
+}
+
+.fade-in {
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+
+
+/* Breakpoints */
+:root {
+  --mobile: 480px;
+  --tablet: 768px;
+  --laptop: 1024px;
+  --desktop: 1280px;
 }

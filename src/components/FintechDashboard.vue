@@ -1,19 +1,15 @@
 <template>
   <div class="dashboard-container">
 
-    <!-- GRID PRINCIPAL -->
     <div class="grid">
 
-      <!-- ***** CARD BALANCE ***** -->
+      <!-- BALANCE CARD -->
       <div class="card balance-card">
-        <div class="title-block">
-          <h3 class="name">Tu Cuenta</h3>
-          <p class="label">Balance Total</p>
-          <p class="amount">$562,000</p>
-        </div>
+        <h3 class="label">Balance Total</h3>
+        <p class="amount">$562,000</p>
       </div>
 
-      <!-- ***** DAILY LIMIT ***** -->
+      <!-- DAILY LIMIT -->
       <div class="card daily-limit">
         <h4>Daily Limit</h4>
         <p class="limit-amount">$2,500.00</p>
@@ -26,7 +22,7 @@
         <span class="percent">12.5%</span>
       </div>
 
-      <!-- ***** ACCIONES ***** -->
+      <!-- ACTIONS -->
       <div class="card actions">
         <div class="action-grid">
           <div class="action-btn"><i class="ri-add-circle-line"></i> Top Up</div>
@@ -36,14 +32,14 @@
         </div>
       </div>
 
-      <!-- ***** SAVING PLANS ***** -->
+      <!-- SAVING PLANS -->
       <div class="card saving-plans">
         <div class="header">
           <h4>Saving Plans</h4>
           <button class="add-btn">+ Add Plan</button>
         </div>
 
-        <p class="total-savings">Total Savings</p>
+        <p class="text-small">Total Savings</p>
         <h3 class="value">$84,500</h3>
 
         <div class="bar-box">
@@ -55,7 +51,7 @@
         </div>
       </div>
 
-      <!-- ***** STATISTICS ***** -->
+      <!-- STATISTICS -->
       <div class="card stats">
         <h4>Statistics (This Month)</h4>
 
@@ -80,7 +76,7 @@
         </div>
       </div>
 
-      <!-- ***** RECENT ACTIVITY ***** -->
+      <!-- RECENT ACTIVITY -->
       <div class="card activity">
         <h4>Recent Activity</h4>
 
@@ -116,7 +112,7 @@
 </template>
 
 <script setup>
-// No API, todo mock.
+// Mock total, no API
 </script>
 
 <style scoped>
@@ -126,17 +122,16 @@
   background: #f4f7fa;
 }
 
-/* GRID LAYOUT */
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-auto-rows: minmax(200px, auto);
   gap: 20px;
 }
 
-/* GENERAL CARD */
+/* CARD */
 .card {
-  background: #ffffff;
+  background: #fff;
   border-radius: 16px;
   padding: 20px;
   border: 1px solid #e2e8f0;
@@ -147,10 +142,11 @@
 .balance-card {
   grid-column: span 2;
 }
-.title-block .label {
-  color: rgba(26, 32, 44, 0.6);
+.label {
+  opacity: 0.6;
+  font-size: 14px;
 }
-.title-block .amount {
+.amount {
   font-size: 32px;
   font-weight: bold;
   color: #1a202c;
@@ -184,8 +180,8 @@
   border-radius: 12px;
   padding: 12px;
   text-align: center;
-  cursor: pointer;
   font-size: 14px;
+  cursor: pointer;
 }
 .action-btn i {
   display: block;
@@ -194,7 +190,7 @@
 }
 
 /* SAVING PLANS */
-.saving-plans .header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -238,7 +234,6 @@
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  color: #1a202c;
 }
 
 /* ACTIVITY */
@@ -254,11 +249,48 @@
   margin-right: 12px;
 }
 .activity .user {
-  font-size: 14px;
   margin: 0;
+  font-size: 14px;
 }
 .activity .time {
   font-size: 12px;
   opacity: 0.6;
+}
+
+/* ---------------------- */
+/* RESPONSIVE GRID */
+/* ---------------------- */
+
+/* Laptop */
+@media (max-width: 1280px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .balance-card {
+    grid-column: span 3;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .balance-card {
+    grid-column: span 2;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-container {
+    padding: 10px;
+  }
+  .card {
+    padding: 14px;
+  }
 }
 </style>
